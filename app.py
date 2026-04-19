@@ -4,7 +4,7 @@ from docx import Document
 from io import BytesIO
 
 # --- API AYARI ---
-GROQ_API_KEY = "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"
+GROQ_API_KEY = client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 client = Groq(api_key=GROQ_API_KEY.strip())
 
 # --- SAYFA AYARLARI ---
