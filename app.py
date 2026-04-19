@@ -8,7 +8,7 @@ from io import BytesIO
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="Enes Altun | Yapay Zeka CV Stüdyosu", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="Mehmet Yılmaz | Yapay Zeka CV Stüdyosu", page_icon="🚀", layout="wide")
 
 # --- CSS EFEKTLERİ ---
 st.markdown("""
@@ -39,9 +39,9 @@ with st.container():
 
     with col1:
         st.subheader("👤 Kişisel Bilgiler")
-        ad_soyad = st.text_input("Adınız Soyadınız", placeholder="Örn: Enes Altun")
-        eposta = st.text_input("E-posta Adresiniz", placeholder="enes@ornek.com")
-        telefon = st.text_input("Telefon Numaranız", placeholder="0555 xxx xx xx")
+        ad_soyad = st.text_input("Adınız Soyadınız", placeholder="Örn: Mehmet Yılmaz")
+        eposta = st.text_input("E-posta Adresiniz", placeholder="mehmet@ornek.com")
+        telefon = st.text_input("Telefon Numaranız", placeholder="05xx xxx xx xx")
 
     with col2:
         st.subheader("🎓 Eğitim ve Deneyim")
@@ -54,7 +54,6 @@ if st.button("Profesyonel CV Oluştur ✨"):
     if ad_soyad and eposta:
         try:
             with st.spinner('🚀 Yapay zeka CV\'ni hazırlıyor, lütfen bekle...'):
-                # Yapay zekaya giden talimat
                 prompt = f"""
                 Lütfen aşağıdaki bilgilere sahip bir kişi için profesyonel, etkileyici ve modern bir CV içeriği oluştur.
                 Dili profesyonel olsun.
@@ -67,7 +66,6 @@ if st.button("Profesyonel CV Oluştur ✨"):
                 Yetenekler: {yetenekler}
                 """
                 
-                # MODEL GÜNCELLENDİ: llama-3.3-70b-versatile
                 chat_completion = client.chat.completions.create(
                     messages=[{"role": "user", "content": prompt}],
                     model="llama-3.3-70b-versatile",
@@ -97,6 +95,5 @@ if st.button("Profesyonel CV Oluştur ✨"):
                 )
         except Exception as e:
             st.error(f"Eyvah! Bir hata oluştu kanka: {e}")
-            st.info("İpucu: 'Sırlar' kısmındaki API anahtarını kontrol etmeyi unutma!")
     else:
-        st.warning("Kanka en azından adını ve e-postanı yazman lazım ki sistem çalışsın!")
+        st.warning("Lütfen en azından adınızı ve e-postanızı girin!")
